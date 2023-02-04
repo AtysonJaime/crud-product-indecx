@@ -8,7 +8,7 @@ export default {
   head: {
     title: 'Crud Product',
     htmlAttrs: {
-      lang: 'pt-br'
+      lang: 'pt-br',
     },
     meta: [
       { charset: 'utf-8' },
@@ -16,25 +16,25 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Sistema de CRUD para produtos'
+        content: 'Sistema de CRUD para produtos',
       },
       { name: 'format-detection', content: 'telephone=no' },
       {
         hid: 'designer',
         name: 'designer',
-        content: 'Atyson Jaime <atysonjaime@gmail.com>'
+        content: 'Atyson Jaime <atysonjaime@gmail.com>',
       },
       { hid: 'og:type', name: 'og:type', content: 'website' },
       {
         hid: 'og:title',
         name: 'og:title',
-        content: 'Sistema de CRUD para produtos'
+        content: 'Sistema de CRUD para produtos',
       },
       {
         hid: 'og:description',
         name: 'og:description',
-        content: 'Sistema de CRUD para produtos'
-      }
+        content: 'Sistema de CRUD para produtos',
+      },
     ],
     link: [
       {
@@ -43,9 +43,22 @@ export default {
         href:
           process.env.NODE_ENV === 'production'
             ? '/crud-product-indecx/favicon.ico'
-            : 'favicon.ico'
-      }
-    ]
+            : 'favicon.ico',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: true,
+      },
+      {
+        href: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap',
+        rel: 'stylesheet',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -53,6 +66,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
+
+  styleResources: {
+    scss: ['assets/sass/main.scss'],
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -63,19 +80,18 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/style-resources'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: '/',
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -91,16 +107,12 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
-  },
-
-  styleResources: {
-    scss: ['assets/sass/main.scss']
+          success: colors.green.accent3,
+        },
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
 }
