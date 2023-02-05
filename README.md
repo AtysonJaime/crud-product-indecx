@@ -1,5 +1,8 @@
 # Crud Product Indecx
 
+![GITHUB](https://img.shields.io/badge/Atysonjaime-Crud%20Product%20Indecx-%234ce595)
+![GitHub](https://img.shields.io/github/license/atysonjaime/crud-product-indecx)
+
 > 📋 Sistema CRUD simples para visualização de produtos, permitindo adicionar, editar, mostrar e excluir as mesmas. Alêm disso, conta com uma autenticação de login, podendo criar novos usuários e recuperação de senha.
 >
 > ![LOGO](./assets/img/indecx-logo.png)
@@ -27,10 +30,10 @@ Esse projeto utiliza-se das seguintes tecnologias:
 - [Node e NPM](https://nodejs.org/en/)
 - [Vue.js](https://vuejs.org)
 - [NuxtJs](https://nuxtjs.org)
-- []()
-- [SASS](https://sass-lang.com)
-- [Fontawesome](https://fontawesome.com)
 - [Auth Nuxt](https://auth.nuxtjs.org)
+- [SASS](https://sass-lang.com)
+- [Vuetify](https://vuetifyjs.com/en/)
+- [Material Desing Icons](https://pictogrammers.com/library/mdi/)
 
 ---
 
