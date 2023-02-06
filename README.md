@@ -34,6 +34,7 @@ Esse projeto utiliza-se das seguintes tecnologias:
 - [SASS](https://sass-lang.com)
 - [Vuetify](https://vuetifyjs.com/en/)
 - [Material Desing Icons](https://pictogrammers.com/library/mdi/)
+- [Vuelidate](https://vuelidate.js.org)
 
 ---
 

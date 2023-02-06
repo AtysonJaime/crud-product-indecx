@@ -65,7 +65,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/validate-vue.js'],
 
   styleResources: {
     scss: ['assets/sass/main.scss'],

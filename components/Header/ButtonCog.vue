@@ -5,7 +5,6 @@
         <v-tooltip bottom>
           <template #activator="{ on: tooltip }">
             <v-btn
-              fab
               icon
               raised
               rounded
