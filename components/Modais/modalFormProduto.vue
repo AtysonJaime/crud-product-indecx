@@ -214,7 +214,7 @@ export default {
         this.$store.dispatch('alerta/showAlerta', {
           info: `Erros presentes no formulário ou Campos não podem ser vazios`,
           show: true,
-          icon: 'mdi-close-circle',
+          icon: 'mdi-close-circle-outline',
           error: true,
         })
       } else {
@@ -230,7 +230,7 @@ export default {
               this.$store.dispatch('alerta/showAlerta', {
                 info: `Erro ${status} ocorreu ao cadastrar produto!`,
                 show: true,
-                icon: 'mdi-close-circle',
+                icon: 'mdi-close-circle-outline',
                 error: true,
               })
             } else {
@@ -256,7 +256,7 @@ export default {
         this.$store.dispatch('alerta/showAlerta', {
           info: `Erros presentes no formulário ou Campos não podem ser vazios`,
           show: true,
-          icon: 'mdi-close-circle',
+          icon: 'mdi-close-circle-outline',
           error: true,
         })
       } else {
@@ -273,7 +273,7 @@ export default {
               this.$store.dispatch('alerta/showAlerta', {
                 info: `Erro ${status} ocorreu ao editar o produto!`,
                 show: true,
-                icon: 'mdi-close-circle',
+                icon: 'mdi-close-circle-outline',
                 error: true,
               })
             } else {

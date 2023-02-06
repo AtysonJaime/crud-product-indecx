@@ -13,7 +13,7 @@
       >
         <div class="alert-container__infos">
           <v-divider class="divider" vertical></v-divider>
-          <v-avatar class="icon-alert" size="30">
+          <v-avatar class="icon-alert" size="36">
             <v-icon dark>
               {{ alertaPopUp.icon }}
             </v-icon>
