@@ -7,16 +7,24 @@ export const state = () => ({
 })
 
 export const mutations = {
-  GET_PRODUTOS(state, payload) {
+  SET_PRODUTOS(state, payload) {
     state.produtos = payload
   },
 }
 
 export const actions = {
   async getProdutos({ commit }) {
-    const data = await supabase.from('produtos').select('*').range(0, 9)
+    const data = await supabase.from('produtos').select('*', { count: 'exact' })
     console.log(data)
+    const responseTratado = data.data.map((produto) => ({
+      id: produto.id,
+      name: produto.product_name,
+      type: produto.product_type,
+      value: 'R$ ' + produto.product_value,
+    }))
+    commit('SET_PRODUTOS', responseTratado)
   },
+
   async postProdutos({ commit }, data) {
     const geraID = (tamanho) => {
       let stringAleatoria = ''
@@ -36,6 +44,24 @@ export const actions = {
       product_type: data.tipo,
       product_value: data.valor,
     })
+    return status
+  },
+
+  async deleteProduto({ commit }, id) {
+    const { status } = await supabase.from('produtos').delete().eq('id', id)
+    return status
+  },
+
+  async editProduto({ commit }, data) {
+    const { status } = await supabase
+      .from('produtos')
+      .update({
+        product_name: data.name,
+        product_type: data.tipo,
+        product_value: data.valor,
+      })
+      .eq('id', data.id)
+    console.log(status)
     return status
   },
 }
