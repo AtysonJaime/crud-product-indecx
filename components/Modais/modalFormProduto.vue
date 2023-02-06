@@ -4,15 +4,13 @@
       <template #activator="{ on, attrs }">
         <v-btn
           v-if="ehEdicao"
-          small
           icon
-          raised
-          rounded
           color="grey darken-3"
           v-bind="attrs"
+          title="Editar Produto"
           v-on="on"
         >
-          <v-icon>mdi-pencil</v-icon>
+          <v-icon>mdi-pencil-outline</v-icon>
         </v-btn>
         <v-btn v-else color="green darken-2" dark v-bind="attrs" v-on="on">
           Criar produto
@@ -93,7 +91,7 @@
             v-if="ehEdicao"
             color="green darken-2"
             dark
-            @click="openModal = false"
+            @click="editaProduto"
           >
             Editar
           </v-btn>
@@ -110,14 +108,36 @@
 import { required } from 'vuelidate/lib/validators'
 
 export default {
-  name: 'ModalProdutoAction',
+  name: 'ModalFormProduto',
+
   props: {
     ehEdicao: {
       type: Boolean,
       require: false,
       default: false,
     },
+    idProduto: {
+      type: String,
+      require: false,
+      default: '',
+    },
+    nameProduto: {
+      type: String,
+      require: false,
+      default: '',
+    },
+    tipoProduto: {
+      type: String,
+      require: false,
+      default: '',
+    },
+    valorProduto: {
+      type: String,
+      require: false,
+      default: '',
+    },
   },
+
   validations: {
     name: { required },
     tipo: { required },
@@ -132,6 +152,7 @@ export default {
       tipos: ['Tipo 1', 'Tipo 2', 'Tipo 3', 'Tipo 4', 'Tipo 5'],
     }
   },
+
   computed: {
     nameErrors() {
       const errors = []
@@ -155,7 +176,25 @@ export default {
         errors.push('Valor do produto precisar ser um valor')
       return errors
     },
+    ahError() {
+      return (
+        this.name === '' ||
+        this.name.length < 3 ||
+        this.tipo === '' ||
+        this.valor === '' ||
+        this.valor === 'NaN'
+      )
+    },
   },
+
+  mounted() {
+    if (this.ehEdicao) {
+      this.name = this.nameProduto
+      this.tipo = this.tipoProduto
+      this.valor = this.valorProduto
+    }
+  },
+
   methods: {
     aplicaMascaraReal() {
       if (this.valor !== '') {
@@ -171,17 +210,11 @@ export default {
       }
     },
     async criaProduto() {
-      if (
-        this.name === '' ||
-        this.name.length < 3 ||
-        this.tipo === '' ||
-        this.valor === '' ||
-        this.valor === 'NaN'
-      ) {
+      if (this.ahError) {
         this.$store.dispatch('alerta/showAlertaInterno', {
           info: `Erros presentes no formulário`,
           show: true,
-          icon: 'mdi-close-octagon',
+          icon: 'mdi-close-circle',
           error: true,
         })
       } else {
@@ -192,12 +225,12 @@ export default {
         }
         await this.$store
           .dispatch('product/postProdutos', data)
-          .then((status) => {
+          .then(async (status) => {
             if (status !== 201) {
               this.$store.dispatch('alerta/showAlertaInterno', {
                 info: `Erro ${status} ocorreu ao cadastrar produto!`,
                 show: true,
-                icon: 'mdi-close-octagon',
+                icon: 'mdi-close-circle',
                 error: true,
               })
             } else {
@@ -209,6 +242,50 @@ export default {
               })
               this.openModal = false
               this.limparForm()
+              await this.$store.dispatch('product/getProdutos')
+            }
+          })
+          .catch((err) => {
+            // eslint-disable-next-line no-console
+            console.log(err)
+          })
+      }
+    },
+    async editaProduto() {
+      if (this.ahError) {
+        this.$store.dispatch('alerta/showAlertaInterno', {
+          info: `Erros presentes no formulário`,
+          show: true,
+          icon: 'mdi-close-circle',
+          error: true,
+        })
+      } else {
+        const data = {
+          id: this.idProduto,
+          name: this.name,
+          tipo: this.tipo,
+          valor: this.valor,
+        }
+        await this.$store
+          .dispatch('product/editProduto', data)
+          .then(async (status) => {
+            if (status !== 204) {
+              this.$store.dispatch('alerta/showAlertaInterno', {
+                info: `Erro ${status} ocorreu ao editar o produto!`,
+                show: true,
+                icon: 'mdi-close-circle',
+                error: true,
+              })
+            } else {
+              this.$store.dispatch('alerta/showAlertaInterno', {
+                info: 'Produto editado com sucesso!',
+                show: true,
+                icon: 'mdi-check',
+                error: false,
+              })
+              this.openModal = false
+              this.limparForm()
+              await this.$store.dispatch('product/getProdutos')
             }
           })
           .catch((err) => {
