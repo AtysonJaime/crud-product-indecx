@@ -178,7 +178,12 @@ export default {
         this.valor === '' ||
         this.valor === 'NaN'
       ) {
-        console.log('Existe erros no formulário')
+        this.$store.dispatch('alerta/showAlertaInterno', {
+          info: `Erros presentes no formulário`,
+          show: true,
+          icon: 'mdi-close-octagon',
+          error: true,
+        })
       } else {
         const data = {
           name: this.name,
@@ -188,11 +193,20 @@ export default {
         await this.$store
           .dispatch('product/postProdutos', data)
           .then((status) => {
-            console.log(status)
             if (status !== 201) {
-              console.log('Erro ao cadastrar produto, Status Code: ', status)
+              this.$store.dispatch('alerta/showAlertaInterno', {
+                info: `Erro ${status} ocorreu ao cadastrar produto!`,
+                show: true,
+                icon: 'mdi-close-octagon',
+                error: true,
+              })
             } else {
-              console.log('Produto Cadastrado')
+              this.$store.dispatch('alerta/showAlertaInterno', {
+                info: 'Produto criado com sucesso!',
+                show: true,
+                icon: 'mdi-check',
+                error: false,
+              })
               this.openModal = false
               this.limparForm()
             }
