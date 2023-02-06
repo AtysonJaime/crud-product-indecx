@@ -9,7 +9,7 @@
 <script>
 import HeaderPage from '~/components/Header/HeaderPage.vue'
 import TableProduct from '~/components/Tables/TableProduct.vue'
-import AlertasInterno from '~/components/Alertas/AlertaInterno.vue'
+import AlertasInterno from '~/components/AlertaTemplate.vue'
 export default {
   name: 'PruductsPage',
 

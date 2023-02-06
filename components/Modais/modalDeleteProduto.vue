@@ -60,14 +60,14 @@ export default {
         .dispatch('product/deleteProduto', this.idProduto)
         .then(async (status) => {
           if (status !== 204) {
-            this.$store.dispatch('alerta/showAlertaInterno', {
+            this.$store.dispatch('alerta/showAlerta', {
               info: `Erro ${status} ocorreu ao cadastrar produto!`,
               show: true,
               icon: 'mdi-close-circle',
               error: true,
             })
           } else {
-            this.$store.dispatch('alerta/showAlertaInterno', {
+            this.$store.dispatch('alerta/showAlerta', {
               info: 'Produto criado com sucesso!',
               show: true,
               icon: 'mdi-check',

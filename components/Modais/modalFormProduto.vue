@@ -211,8 +211,8 @@ export default {
     },
     async criaProduto() {
       if (this.ahError) {
-        this.$store.dispatch('alerta/showAlertaInterno', {
-          info: `Erros presentes no formulário`,
+        this.$store.dispatch('alerta/showAlerta', {
+          info: `Erros presentes no formulário ou Campos não podem ser vazios`,
           show: true,
           icon: 'mdi-close-circle',
           error: true,
@@ -227,14 +227,14 @@ export default {
           .dispatch('product/postProdutos', data)
           .then(async (status) => {
             if (status !== 201) {
-              this.$store.dispatch('alerta/showAlertaInterno', {
+              this.$store.dispatch('alerta/showAlerta', {
                 info: `Erro ${status} ocorreu ao cadastrar produto!`,
                 show: true,
                 icon: 'mdi-close-circle',
                 error: true,
               })
             } else {
-              this.$store.dispatch('alerta/showAlertaInterno', {
+              this.$store.dispatch('alerta/showAlerta', {
                 info: 'Produto criado com sucesso!',
                 show: true,
                 icon: 'mdi-check',
@@ -253,8 +253,8 @@ export default {
     },
     async editaProduto() {
       if (this.ahError) {
-        this.$store.dispatch('alerta/showAlertaInterno', {
-          info: `Erros presentes no formulário`,
+        this.$store.dispatch('alerta/showAlerta', {
+          info: `Erros presentes no formulário ou Campos não podem ser vazios`,
           show: true,
           icon: 'mdi-close-circle',
           error: true,
@@ -270,14 +270,14 @@ export default {
           .dispatch('product/editProduto', data)
           .then(async (status) => {
             if (status !== 204) {
-              this.$store.dispatch('alerta/showAlertaInterno', {
+              this.$store.dispatch('alerta/showAlerta', {
                 info: `Erro ${status} ocorreu ao editar o produto!`,
                 show: true,
                 icon: 'mdi-close-circle',
                 error: true,
               })
             } else {
-              this.$store.dispatch('alerta/showAlertaInterno', {
+              this.$store.dispatch('alerta/showAlerta', {
                 info: 'Produto editado com sucesso!',
                 show: true,
                 icon: 'mdi-check',

@@ -1,20 +1,24 @@
 <template>
-  <div v-if="alertaInterno.show" class="alert-template">
+  <div
+    v-if="alertaPopUp.show"
+    class="alert-template"
+    :class="{ interno: ehInterno, externo: !ehInterno }"
+  >
     <v-alert prominent transition="scale-transition" elevation="2" tile>
       <div
         :class="{
-          'alert-container sucesso': !alertaInterno.error,
-          'alert-container perigo': alertaInterno.error,
+          'alert-container sucesso': !alertaPopUp.error,
+          'alert-container perigo': alertaPopUp.error,
         }"
       >
         <div class="alert-container__infos">
           <v-divider class="divider" vertical></v-divider>
           <v-avatar class="icon-alert" size="30">
             <v-icon dark>
-              {{ alertaInterno.icon }}
+              {{ alertaPopUp.icon }}
             </v-icon>
           </v-avatar>
-          <p>{{ alertaInterno.info }}</p>
+          <p>{{ alertaPopUp.info }}</p>
         </div>
         <div class="alert-container__close">
           <v-btn icon @click="closeAlerta">
@@ -29,15 +33,23 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  name: 'AlertasInterno',
+  name: 'AlertasTemplate',
+
+  props: {
+    ehInterno: {
+      type: Boolean,
+      require: false,
+      default: true,
+    },
+  },
 
   computed: {
-    ...mapState('alerta', ['alertaInterno']),
+    ...mapState('alerta', ['alertaPopUp']),
   },
 
   methods: {
     closeAlerta() {
-      this.$store.dispatch('alerta/closeAlertaInterno')
+      this.$store.dispatch('alerta/closeAlerta')
     },
   },
 }
@@ -51,12 +63,21 @@ export default {
   color: #000;
   display: flex;
   position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
-  justify-content: flex-end;
   align-items: baseline;
   z-index: 10000;
+
+  &.interno {
+    top: 0;
+    right: 0;
+    justify-content: flex-end;
+  }
+
+  &.externo {
+    bottom: 0;
+    left: 0;
+    justify-content: flex-start;
+  }
 
   .v-alert__wrapper {
     width: 100% !important;

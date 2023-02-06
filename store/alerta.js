@@ -1,5 +1,5 @@
 export const state = () => ({
-  alertaInterno: {
+  alertaPopUp: {
     info: '',
     show: false,
     icon: '',
@@ -7,25 +7,25 @@ export const state = () => ({
   },
 })
 export const mutations = {
-  SHOW_ALERTA_INTERNO(state, payload) {
-    state.alertaInterno.info = payload.info
-    state.alertaInterno.show = payload.show
-    state.alertaInterno.icon = payload.icon
-    state.alertaInterno.error = payload.error
+  SHOW_ALERTA(state, payload) {
+    state.alertaPopUp.info = payload.info
+    state.alertaPopUp.show = payload.show
+    state.alertaPopUp.icon = payload.icon
+    state.alertaPopUp.error = payload.error
   },
-  CLOSE_ALERTA_INTERNO(state, payload) {
-    state.alertaInterno.show = payload
-    state.alertaInterno.info = ''
-    state.alertaInterno.icon = ''
-    state.alertaInterno.error = false
+  CLOSE_ALERTA(state, payload) {
+    state.alertaPopUp.show = payload
+    state.alertaPopUp.info = ''
+    state.alertaPopUp.icon = ''
+    state.alertaPopUp.error = false
   },
 }
 
 export const actions = {
-  showAlertaInterno({ commit }, infos) {
-    commit('SHOW_ALERTA_INTERNO', infos)
+  showAlerta({ commit }, infos) {
+    commit('SHOW_ALERTA', infos)
   },
-  closeAlertaInterno({ commit }) {
-    commit('CLOSE_ALERTA_INTERNO', false)
+  closeAlerta({ commit }) {
+    commit('CLOSE_ALERTA', false)
   },
 }
