@@ -4,7 +4,7 @@
       <div
         :class="{
           'alert-container sucesso': !alertaInterno.error,
-          'alert-container error': alertaInterno.error,
+          'alert-container perigo': alertaInterno.error,
         }"
       >
         <div class="alert-container__infos">
@@ -111,7 +111,7 @@ export default {
           background-color: #4de594;
         }
       }
-      &.error {
+      &.perigo {
         .divider {
           border-color: #ff513d;
           background-color: #ff513d;
