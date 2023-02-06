@@ -2,8 +2,6 @@ import { supabase } from '~/service/supabaseApi'
 
 export const state = () => ({
   produtos: [],
-  page: 1,
-  totalpages: 0,
 })
 
 export const mutations = {
@@ -15,7 +13,6 @@ export const mutations = {
 export const actions = {
   async getProdutos({ commit }) {
     const data = await supabase.from('produtos').select('*', { count: 'exact' })
-    console.log(data)
     const responseTratado = data.data.map((produto) => ({
       id: produto.id,
       name: produto.product_name,
@@ -61,7 +58,6 @@ export const actions = {
         product_value: data.valor,
       })
       .eq('id', data.id)
-    console.log(status)
     return status
   },
 }
