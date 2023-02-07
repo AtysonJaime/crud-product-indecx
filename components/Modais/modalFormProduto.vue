@@ -27,7 +27,12 @@
             raised
             rounded
             color="grey darken-3"
-            @click="openModal = false"
+            @click="
+              () => {
+                openModal = false
+                limparForm()
+              }
+            "
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -40,40 +45,59 @@
             <v-container>
               <v-row>
                 <v-col lg="6" sm="12">
-                  <v-text-field
-                    v-model="name"
-                    :error-messages="nameErrors"
-                    label="Nome do produto"
-                    required
-                    @input="$v.name.$touch()"
-                    @blur="$v.name.$touch()"
-                  ></v-text-field>
+                  <div class="input-content">
+                    <label for="produtoNome">Nome do produto</label>
+                    <v-text-field
+                      id="produtoNome"
+                      v-model="name"
+                      outlined
+                      :error-messages="nameErrors"
+                      color="#4CE595"
+                      placeholder="Digite o nome do produto"
+                      required
+                      hide-details="auto"
+                      @input="$v.name.$touch()"
+                      @blur="$v.name.$touch()"
+                    ></v-text-field>
+                  </div>
                 </v-col>
                 <v-col lg="6" sm="12">
-                  <v-select
-                    v-model="tipo"
-                    :items="tipos"
-                    :error-messages="tipoErrors"
-                    label="Tipo do produto"
-                    required
-                    @change="$v.tipo.$touch()"
-                    @blur="$v.tipo.$touch()"
-                  ></v-select>
+                  <div class="input-content">
+                    <label for="produtoTipo">Tipo de produto</label>
+                    <v-select
+                      id="produtoTipo"
+                      v-model="tipo"
+                      outlined
+                      :items="tipos"
+                      :error-messages="tipoErrors"
+                      placeholder="Escolha o tipo de produto"
+                      required
+                      hide-details="auto"
+                      color="#4CE595"
+                      @change="$v.tipo.$touch()"
+                      @blur="$v.tipo.$touch()"
+                    ></v-select>
+                  </div>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col lg="6" sm="12">
-                  <v-text-field
-                    v-model="valor"
-                    :error-messages="valorErrors"
-                    label="Valor do produto"
-                    placeholder="R$"
-                    prefix="R$"
-                    required
-                    @keyup="aplicaMascaraReal"
-                    @input="$v.valor.$touch()"
-                    @blur="$v.valor.$touch()"
-                  ></v-text-field>
+                  <div class="input-content">
+                    <label for="produtoValor">Valor do produto</label>
+                    <v-text-field
+                      id="produtoValor"
+                      v-model="valor"
+                      outlined
+                      :error-messages="valorErrors"
+                      placeholder="R$"
+                      required
+                      hide-details="auto"
+                      color="#4CE595"
+                      @keyup="aplicaMascaraReal"
+                      @input="$v.valor.$touch()"
+                      @blur="$v.valor.$touch()"
+                    ></v-text-field>
+                  </div>
                 </v-col>
               </v-row>
             </v-container>
@@ -84,7 +108,16 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn outlined color="green darken-2" @click="openModal = false">
+          <v-btn
+            outlined
+            color="green darken-2"
+            @click="
+              () => {
+                openModal = false
+                limparForm()
+              }
+            "
+          >
             Fechar
           </v-btn>
           <v-btn

@@ -24,12 +24,17 @@
       >
         <template #top>
           <div class="actions-header-table">
-            <v-text-field
-              v-model="search"
-              class="search-table"
-              append-icon="mdi-magnify"
-              label="Faça sua busca"
-            ></v-text-field>
+            <div class="input-content">
+              <v-text-field
+                v-model="search"
+                outlined
+                class="search-table"
+                append-icon="mdi-magnify"
+                color="#4CE595"
+                placeholder="Faça sua busca"
+                hide-details
+              ></v-text-field>
+            </div>
             <ModalFormProduto />
           </div>
         </template>
@@ -171,6 +176,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      margin-bottom: 1.25rem;
 
       .search-table {
         max-width: 15rem;

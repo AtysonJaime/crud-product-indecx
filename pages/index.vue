@@ -14,6 +14,8 @@
           :error-messages="emailErrors"
           placeholder="Digite o seu e-mail"
           required
+          color="#4CE595"
+          hide-details="auto"
           @input="$v.email.$touch()"
           @blur="$v.email.$touch()"
         ></v-text-field>
@@ -25,8 +27,10 @@
           v-model="password"
           :type="showPassword ? 'text' : 'password'"
           outlined
+          color="#4CE595"
           :error-messages="passwordErrors"
           placeholder="Insira sua senha"
+          hide-details="auto"
           required
           :append-icon="
             showPassword ? 'mdi-eye-outline' : 'mdi-eye-off-outline'

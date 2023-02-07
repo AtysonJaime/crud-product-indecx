@@ -13,7 +13,9 @@
             id="emailInput"
             v-model="email"
             outlined
+            hide-details="auto"
             :error-messages="emailErrors"
+            color="#4CE595"
             placeholder="Digite o seu e-mail"
             required
             @input="$v.email.$touch()"
@@ -36,10 +38,12 @@
           <v-text-field
             id="codigoInput"
             v-model="codigo"
+            hide-details="auto"
             outlined
             :error-messages="codigoErrors"
             placeholder="Digite o código"
             required
+            color="#4CE595"
             @input="$v.codigo.$touch()"
             @blur="$v.codigo.$touch()"
           ></v-text-field>
@@ -60,8 +64,10 @@
           <v-text-field
             id="senhaInput"
             v-model="password"
+            hide-details="auto"
             :type="showPassword ? 'text' : 'password'"
             outlined
+            color="#4CE595"
             :error-messages="passwordErrors"
             placeholder="Insira a nova senha"
             required
@@ -79,6 +85,8 @@
           <v-text-field
             id="senhaConfirmeInput"
             v-model="passwordMatch"
+            hide-details="auto"
+            color="#4CE595"
             :type="showPasswordMatch ? 'text' : 'password'"
             outlined
             :error-messages="passwordMatchErrors"
