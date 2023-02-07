@@ -75,7 +75,7 @@ O layout desenvolvido segue um Figma disponibilizado pela empresa.
 
 ## 🚀 Deploy
 
-O projeto encontra-se hospedado no [GITHUB Pages](https://pages.github.com), Para visualizar, [click aqui!]()
+O projeto encontra-se hospedado no [GITHUB Pages](https://pages.github.com), Para visualizar, [click aqui!](https://atysonjaime.github.io/crud-product-indecx/)
 
 ---
 
