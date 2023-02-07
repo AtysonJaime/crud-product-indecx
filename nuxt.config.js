@@ -65,7 +65,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/validate-vue.js'],
+  plugins: [
+    '~/plugins/validate-vue.js',
+    { src: '~plugins/supabase-vue.js', mode: 'client' },
+  ],
 
   styleResources: {
     scss: ['assets/sass/main.scss'],
@@ -86,6 +89,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/supabase',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
