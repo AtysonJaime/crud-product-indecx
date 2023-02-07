@@ -13,12 +13,14 @@
 
 _Ao está na página de login, para acessar o sistema você deve colocar os seguintes valores nos campos e-mail e senha:_
 
-| Campo  | Valor           |
-| ------ | --------------- |
-| E-Mail | admin@gmail.com |
-| Senha  | admin!123       |
+| Campo  | Valor                 |
+| ------ | --------------------- |
+| E-Mail | atysonjaime@gmail.com |
+| Senha  | admin!123             |
 
-> Caso deseje criar um outro usuário é so clicar no botão cadastrar.
+> Caso deseje criar um outro usuário é so clicar no botão cadastrar novo usuário.
+>
+> !IMPORTANTE! é necessario confirmar o email adicionado para ter acesso ao sistema.
 
 ---
 
@@ -30,7 +32,7 @@ Esse projeto utiliza-se das seguintes tecnologias:
 - [Node e NPM](https://nodejs.org/en/)
 - [Vue.js](https://vuejs.org)
 - [NuxtJs](https://nuxtjs.org)
-- [Auth Nuxt](https://auth.nuxtjs.org)
+- [Supabase](https://supabase.com/)
 - [SASS](https://sass-lang.com)
 - [Vuetify](https://vuetifyjs.com/en/)
 - [Material Desing Icons](https://pictogrammers.com/library/mdi/)
