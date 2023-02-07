@@ -1,5 +1,17 @@
 import { supabase } from '~/service/supabaseApi'
 
+// Função para gerar o ID
+const geraID = (tamanho) => {
+  let stringAleatoria = ''
+  const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  for (let i = 0; i < tamanho; i++) {
+    stringAleatoria += caracteres.charAt(
+      Math.floor(Math.random() * caracteres.length)
+    )
+  }
+  return stringAleatoria
+}
+
 export const state = () => ({
   produtos: [],
 })
@@ -12,6 +24,7 @@ export const mutations = {
 
 export const actions = {
   async getProdutos({ commit }) {
+    // Realiza consumo da API para retornar todos os itens cadastrados
     const data = await supabase.from('produtos').select('*', { count: 'exact' })
     const responseTratado = data.data.map((produto) => ({
       id: produto.id,
@@ -19,20 +32,11 @@ export const actions = {
       type: produto.product_type,
       value: 'R$ ' + produto.product_value,
     }))
+
     commit('SET_PRODUTOS', responseTratado)
   },
 
   async postProdutos({ commit }, data) {
-    const geraID = (tamanho) => {
-      let stringAleatoria = ''
-      const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-      for (let i = 0; i < tamanho; i++) {
-        stringAleatoria += caracteres.charAt(
-          Math.floor(Math.random() * caracteres.length)
-        )
-      }
-      return stringAleatoria
-    }
     const id = geraID(6)
 
     const { status } = await supabase.from('produtos').insert({

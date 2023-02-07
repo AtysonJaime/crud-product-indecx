@@ -68,13 +68,12 @@ export default {
             })
           } else {
             this.$store.dispatch('alerta/showAlerta', {
-              info: 'Produto criado com sucesso!',
+              info: 'Produto deletado com sucesso!',
               show: true,
               icon: 'mdi-check',
               error: false,
             })
             this.openModal = false
-            this.limparForm()
             await this.$store.dispatch('product/getProdutos')
           }
         })
