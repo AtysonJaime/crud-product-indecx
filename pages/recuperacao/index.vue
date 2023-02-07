@@ -220,3 +220,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.container-actions {
+  margin-top: 1.75rem;
+}
+</style>
