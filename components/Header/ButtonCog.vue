@@ -38,9 +38,27 @@
 export default {
   name: 'ButtonCogAction',
   methods: {
-    logout() {
-      // eslint-disable-next-line no-console
-      console.log('Fui Clicado!')
+    async logout() {
+      await this.$supabase.auth
+        .signOut()
+        .then((res) => {
+          this.$store.dispatch('user/updateUser', { session: [], user: [] })
+          this.$store.dispatch('alerta/showAlerta', {
+            info: `Usuário deslogado com sucesso`,
+            show: true,
+            icon: 'mdi-check',
+            error: false,
+          })
+          return this.$router.push('/login')
+        })
+        .catch((err) => {
+          this.$store.dispatch('alerta/showAlerta', {
+            info: `Erro encontrado ao deslogar: ${err}`,
+            show: true,
+            icon: 'mdi-close-circle-outline',
+            error: true,
+          })
+        })
     },
   },
 }
