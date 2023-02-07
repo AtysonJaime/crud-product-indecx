@@ -11,7 +11,6 @@
         <v-icon>mdi-trash-can-outline</v-icon>
       </v-btn>
     </template>
-
     <v-card>
       <v-card-text>
         <div class="container-modal-delete">
