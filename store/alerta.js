@@ -24,6 +24,10 @@ export const mutations = {
 export const actions = {
   showAlerta({ commit }, infos) {
     commit('SHOW_ALERTA', infos)
+
+    setTimeout(() => {
+      commit('CLOSE_ALERTA', false)
+    }, 5000)
   },
   closeAlerta({ commit }) {
     commit('CLOSE_ALERTA', false)
